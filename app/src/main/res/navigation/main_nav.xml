@@ -2,17 +2,4 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_nav"
-    app:startDestination="@id/introActivity">
-
-    <activity
-        android:id="@+id/introActivity"
-        android:name="com.example.pocketloa.view.intro.introActivity"
-        android:label="activity_intro"
-        tools:layout="@layout/activity_intro" />
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.pocketloa.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-</navigation>
+    android:id="@+id/main_nav"/>
