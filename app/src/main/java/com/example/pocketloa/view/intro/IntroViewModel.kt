@@ -1,4 +1,4 @@
-package com.example.pocketloa.view.intro
+package com.example.pocketloa.network.view.intro
 
 import androidx.lifecycle.ViewModel
 

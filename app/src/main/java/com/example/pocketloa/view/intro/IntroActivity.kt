@@ -1,11 +1,10 @@
-package com.example.pocketloa.view.intro
+package com.example.pocketloa.network.view.intro
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.pocketloa.R
 import com.example.pocketloa.databinding.ActivityIntroBinding
 import com.example.pocketloa.view.MainActivity
 import timber.log.Timber
