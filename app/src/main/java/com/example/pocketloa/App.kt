@@ -22,5 +22,7 @@ class App : Application(){
 		Timber.plant(Timber.DebugTree())
 	}
 
+	var test = "1 "
+
 
 }
