@@ -1,4 +1,18 @@
-package com.example.pocketloa.network
+package com.example.coco.network
 
-class RetrofitInstance {
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.prefs.BackingStoreException
+
+object RetrofitInstance {
+	private const val BASE_URL = "https://api.bithumb.com/"
+	private val client = Retrofit
+		.Builder()
+		.baseUrl(BASE_URL)
+		.addConverterFactory(GsonConverterFactory.create())
+		.build()
+
+	fun getInstance() : Retrofit{
+		return  client
+	}
 }
