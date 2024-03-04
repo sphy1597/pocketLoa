@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,8 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PocketLoa"
         tools:targetApi="31">
+
         <activity
-            android:name=".view.intro.IntroActivity"
+            android:name=".view.auction.AuctionActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".network.view.intro.IntroActivity"
             android:exported="true"
             android:theme="@style/Theme.PocketLoa.Splash">
             <intent-filter>
@@ -20,14 +26,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".view.MainActivity"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

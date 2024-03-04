@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_viewholder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:textSize="24sp"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="등급"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/grade_quality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="품질"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/buy_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="즉시구매가"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/stat_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="스탯"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/first_ability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="각인"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/second_ability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="각인"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_reorder_24" />
+
+</LinearLayout>

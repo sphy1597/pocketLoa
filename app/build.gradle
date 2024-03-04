@@ -45,8 +45,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    // timber >> log print
-    implementation 'com.jakewharton.timber:timber:5.0.1'
 
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.0")
@@ -82,4 +80,7 @@ dependencies {
 
     // Kotlin + coroutines
     implementation("androidx.work:work-runtime-ktx:2.8.0")
+
+    // okhttp : logging http api
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
