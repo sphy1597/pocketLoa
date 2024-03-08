@@ -18,7 +18,7 @@
             android:name=".view.auction.AuctionActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".network.view.intro.IntroActivity"
+            android:name=".view.intro.IntroActivity"
             android:exported="true"
             android:theme="@style/Theme.PocketLoa.Splash">
             <intent-filter>

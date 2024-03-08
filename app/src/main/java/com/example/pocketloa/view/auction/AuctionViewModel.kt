@@ -8,8 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pocketloa.Repository.NetworkRepository
 import com.example.pocketloa.model.auction.req.EtcOption
 import com.example.pocketloa.model.auction.req.RequestBody
-import com.example.pocketloa.model.auction.res.auctionResponse
-import com.google.gson.JsonObject
+import com.example.pocketloa.model.auction.res.AuctionResponse
 import kotlinx.coroutines.launch
 
 class AuctionViewModel : ViewModel() {
@@ -20,7 +19,7 @@ class AuctionViewModel : ViewModel() {
 
 	val requestBody = RequestBody(
 		itemGradeQuality = 90,
-		itemName = "거룩한 예언자의 반지",
+		itemName = null,
 		etcOptions = listOf(
 			EtcOption(firstOption = 3, secondOption = 240, minValue = 3, maxValue = null),
 			EtcOption(firstOption = 3, secondOption = 255, minValue = 6, maxValue = null)
@@ -28,21 +27,27 @@ class AuctionViewModel : ViewModel() {
 		sort = "BIDSTART_PRICE",
 		categoryCode = 200030,
 		itemGrade = "고대",
-		pageNo = 0,
+		pageNo = 1,
 		sortCondition = "ASC"
 	)
 
 
-	private val _itemInfo = MutableLiveData<List<auctionResponse>>()
-	val iteminfo: LiveData<List<auctionResponse>>
+	private val _itemInfo = MutableLiveData<List<AuctionResponse>>()
+	val iteminfo: LiveData<List<AuctionResponse>>
 	get() = _itemInfo
 
 	fun postMatchItems() = viewModelScope.launch {
 		val result = networkRepo.postMatchItems(token, requestBody)
 
-		for (item in result.Items){
-			Log.d("test log", "name : ${item.Name}")
+		result.Items?.let{
+			for (item in result.Items){
+				Log.d("test log", "name : ${item.Name}")
+			}
 		}
+
+		
+
+
 	}
 
 }

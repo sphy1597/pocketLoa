@@ -1,8 +1,9 @@
 package com.example.pocketloa.model.auction.res
 
-data class auctionResponse(
-    val Items: List<Item>,
+data class AuctionResponse(
     val PageNo: Int,
     val PageSize: Int,
-    val TotalCount: Int
+    val TotalCount: Int,
+    val Items: List<Item>?,
+
 )

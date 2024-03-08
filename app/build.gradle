@@ -56,6 +56,7 @@ dependencies {
     // retrofit >> API 통신
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
     // Coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2'
@@ -81,6 +82,11 @@ dependencies {
     // Kotlin + coroutines
     implementation("androidx.work:work-runtime-ktx:2.8.0")
 
-    // okhttp : logging http api
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    // OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+
+    // image loading
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
 }
