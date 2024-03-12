@@ -8,5 +8,5 @@ data class AuctionInfo(
     val EndDate: String,
     val IsCompetitive: Boolean,
     val StartPrice: Int,
-    val TradeAllowCount: Int
+    val TradeAllowCount: Int  // 거래 가능 횟수
 )

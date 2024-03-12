@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/figma_vector_round_card"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/auction_list_image"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_gravity="center"
+        android:contentDescription="이미지 뷰"
+        android:src="@drawable/mococo" />
+
+    <!--  아이템 정보  -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/auction_list_name"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="참혹한 몰락의 반지"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+
+
+        <TextView
+            android:id="@+id/auction_list_stat"
+            android:layout_width="127dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="스탯"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+
+        <TextView
+            android:id="@+id/auction_list_first"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="각인"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/auction_list_second"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="각인"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="12dp" />
+
+
+        <TextView
+            android:id="@+id/auction_list_penalty"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="패널티"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+
+    </LinearLayout>
+
+    <!--    가격 정보     -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+
+
+        <TextView
+            android:id="@+id/auction_list_gradeQuality"
+            android:layout_width="127dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="품질"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+
+        <TextView
+            android:id="@+id/auction_list_allowTrade"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="거래 가능 횟수"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/auction_list_buyPrice"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="즉시 구매가"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/auction_list_bidPrice"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:text="경매 최저가"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -5,6 +5,6 @@ data class Option(
     val IsPenalty: Boolean,
     val OptionName: String,
     val OptionNameTripod: String,
-    val Type: String,
+    val Type: String, // 스탯, 어빌리티
     val Value: Int
 )
