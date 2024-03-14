@@ -5,8 +5,10 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pocketloa.R
 import com.example.pocketloa.model.auction.res.Item
 import org.w3c.dom.Text
@@ -24,7 +26,7 @@ class AuctionRVAdapter(val context: Context, private val itemList: List<Item>) :
 		private val penaltyOption : TextView = itemView.findViewById(R.id.auction_list_penalty)
 		private val allowTrade : TextView = itemView.findViewById(R.id.auction_list_allowTrade)
 		private val bidPrice : TextView = itemView.findViewById(R.id.auction_list_bidPrice)
-
+		private val iconImage : ImageView = itemView.findViewById(R.id.auction_list_image)
 		fun bind(item: Item){
 
 			var stat = ""
@@ -63,6 +65,7 @@ class AuctionRVAdapter(val context: Context, private val itemList: List<Item>) :
 			firstOption.text = ability[0]
 			secondOption.text = ability[1]
 			allowTrade.text = "${item.AuctionInfo.TradeAllowCount.toString()}회 거래 가능"
+			Glide.with(itemView).load(item.Icon).into(iconImage)
 
 
 

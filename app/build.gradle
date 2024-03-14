@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+// local.properties 파일에서 api key 가져오기
+def Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.example.pocketloa'
     compileSdk 34
@@ -15,6 +19,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", properties.getProperty("APIKEY"))
+
     }
 
     buildTypes {
@@ -25,6 +32,10 @@ android {
         viewBinding {
             enabled true
         }
+        debug{
+
+
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -32,6 +43,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
     }
 }
 
@@ -92,5 +107,6 @@ dependencies {
     // vector drawable
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
     implementation("androidx.vectordrawable:vectordrawable-animated:1.1.0")
+
 
 }
