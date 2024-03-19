@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.pocketloa.R
 import com.example.pocketloa.databinding.ActivityMainBinding
 import com.example.pocketloa.view.auction.AuctionRVActivity
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 	private lateinit var binding : ActivityMainBinding
 
 	override fun onCreate(savedInstanceState: Bundle?) {
+
+		installSplashScreen()
 
 		super.onCreate(savedInstanceState)
 		binding = ActivityMainBinding.inflate(layoutInflater)
