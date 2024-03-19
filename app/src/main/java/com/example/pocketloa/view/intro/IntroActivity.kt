@@ -1,13 +1,15 @@
-package com.example.pocketloa.network.view.intro
+package com.example.pocketloa.view.intro
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.pocketloa.databinding.ActivityIntroBinding
 import com.example.pocketloa.view.MainActivity
-import timber.log.Timber
+import com.example.pocketloa.view.auction.AuctionRVActivity
+import com.example.pocketloa.view.auction.AuctionSelectActivity
 
 class IntroActivity : AppCompatActivity() {
 
@@ -21,10 +23,12 @@ class IntroActivity : AppCompatActivity() {
 		binding = ActivityIntroBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
-		Timber.tag("test").d("onCreate IntroActivity")
 
 		val intent = Intent(this, MainActivity::class.java)
 		startActivity(intent)
+
+		Log.d("test log", "onCreate intro activity")
+		viewModel.test()
 
 
 	}
