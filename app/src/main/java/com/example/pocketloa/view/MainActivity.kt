@@ -1,17 +1,16 @@
 package com.example.pocketloa.view
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.Fragment
 import com.example.pocketloa.R
 import com.example.pocketloa.databinding.ActivityMainBinding
-import com.example.pocketloa.view.auction.AuctionRVActivity
-import com.example.pocketloa.view.auction.AuctionSelectActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,28 +19,41 @@ class MainActivity : AppCompatActivity() {
 	private lateinit var binding : ActivityMainBinding
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-
-		installSplashScreen()
-
 		super.onCreate(savedInstanceState)
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
+		// set tool bar title
+		replaceFragment(HomeFragment(), "POCKETLOA")
 
-		binding.mainAuctionButton.setOnClickListener {
-			val intent = Intent(this, AuctionSelectActivity::class.java)
-			startActivity(intent)
+		binding.bottomNav.setOnItemSelectedListener {
+			when(it.itemId){
+				R.id.bottom_nav_home -> replaceFragment(HomeFragment(), "POCKETLOA")
+				R.id.bottom_nav_auction -> replaceFragment(AuctionFragment(), "AUCTION")
+				R.id.bottom_nav_menu -> replaceFragment(MenuFragment(), "MENU")
+				else -> {
+					Log.d("test", "bottom nav when")
+
+				}
+
+			}
+			true
 		}
 
 
+	}
+	private fun replaceFragment(fragment: Fragment, title : String){
+		val fragmentManager = supportFragmentManager
+		val fragmentTransaction = fragmentManager.beginTransaction()
+		fragmentTransaction.replace(R.id.main_frame_layout, fragment)
+		fragmentTransaction.commit()
+		binding.toolbarLayout.toolbarTitle.text = title
 
 	}
-
 
 	/*
 		back 버튼으로 introActivity로 이동 방지
 		1.5초 안에 2번 누르면 앱 종료
 	*/
-
 	@SuppressLint("MissingSuperCall")
 	override fun onBackPressed() {
 

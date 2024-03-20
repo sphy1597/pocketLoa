@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.os.HandlerCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.pocketloa.databinding.ActivityIntroBinding
 import com.example.pocketloa.view.MainActivity
@@ -17,19 +18,20 @@ class IntroActivity : AppCompatActivity() {
 	private val viewModel : IntroViewModel by viewModels()
 	override fun onCreate(savedInstanceState: Bundle?) {
 
-		installSplashScreen()
-
 		super.onCreate(savedInstanceState)
 		binding = ActivityIntroBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
-
-		val intent = Intent(this, MainActivity::class.java)
-		startActivity(intent)
-
-		Log.d("test log", "onCreate intro activity")
-		viewModel.test()
-
-
+		val handler = HandlerCompat.createAsync(mainLooper)
+		handler.postDelayed(
+			{
+				val intent = Intent(this, MainActivity::class.java)
+				startActivity(intent)
+				finish()
+			}, SPLASH_DELAY_TIME
+		)
+	}
+	companion object {
+		private const val SPLASH_DELAY_TIME = 2000L
 	}
 }

@@ -14,6 +14,7 @@ class AuctionSelectActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		binding = ActivityAuctionSelectBinding.inflate(layoutInflater)
 		setContentView(binding.root)
+		binding.toolbarLayout.toolbarTitle.text = "경매장"
 
 		binding.auctionSelectButton.setOnClickListener {
 			Log.d("test log", "Click auction Select Button")
