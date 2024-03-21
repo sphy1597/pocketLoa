@@ -22,13 +22,12 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
-		// set tool bar title
-		replaceFragment(HomeFragment(), "POCKETLOA")
+		initNav()
 
 		binding.bottomNav.setOnItemSelectedListener {
 			when(it.itemId){
-				R.id.bottom_nav_home -> replaceFragment(HomeFragment(), "POCKETLOA")
 				R.id.bottom_nav_auction -> replaceFragment(AuctionFragment(), "AUCTION")
+				R.id.bottom_nav_home -> replaceFragment(HomeFragment(), "POCKETLOA")
 				R.id.bottom_nav_menu -> replaceFragment(MenuFragment(), "MENU")
 				else -> {
 					Log.d("test", "bottom nav when")
@@ -48,6 +47,13 @@ class MainActivity : AppCompatActivity() {
 		fragmentTransaction.commit()
 		binding.toolbarLayout.toolbarTitle.text = title
 
+	}
+
+	// 시작하면 홈 화면 선택
+	private fun initNav(){
+		// set tool bar title
+		replaceFragment(HomeFragment(), "POCKETLOA")
+		binding.bottomNav.selectedItemId = R.id.bottom_nav_home
 	}
 
 	/*
