@@ -59,6 +59,10 @@ class AuctionViewModel : ViewModel() {
 
 	}
 
+	fun viewModelTest() {
+		Log.d("test Log", "Auction View Model Test")
+	}
+
 
 
 }

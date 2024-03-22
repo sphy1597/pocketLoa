@@ -2,4 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_nav"/>
+    android:id="@+id/main_nav"
+    app:startDestination="@id/auctionFragment">
+    <fragment
+        android:id="@+id/auctionFragment"
+        android:name="com.example.pocketloa.view.AuctionFragment"
+        android:label="fragment_auction"
+        tools:layout="@layout/fragment_auction" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.pocketloa.view.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.pocketloa.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+</navigation>
