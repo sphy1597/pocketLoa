@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 		val fragmentTransaction = fragmentManager.beginTransaction()
 		fragmentTransaction.replace(R.id.main_frame_layout, fragment)
 		fragmentTransaction.commit()
-		binding.toolbarLayout.toolbarTitle.text = title
+		binding.toolbarMain.toolbarTitle.text = title
 
 	}
 
@@ -78,4 +78,6 @@ class MainActivity : AppCompatActivity() {
 	private fun runDelayed(millis: Long, function: () -> Unit) {
 		Handler(Looper.getMainLooper()).postDelayed(function, millis)
 	}
+
+
 }
