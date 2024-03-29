@@ -6,7 +6,7 @@
     app:startDestination="@id/auctionFragment">
     <fragment
         android:id="@+id/auctionFragment"
-        android:name="com.example.pocketloa.view.AuctionFragment"
+        android:name="com.example.pocketloa.view.auction.AuctionFragment"
         android:label="fragment_auction"
         tools:layout="@layout/fragment_auction" />
     <fragment

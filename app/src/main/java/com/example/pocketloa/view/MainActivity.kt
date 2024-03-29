@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pocketloa.R
 import com.example.pocketloa.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.pocketloa.view.auction.AuctionFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
 	private fun runDelayed(millis: Long, function: () -> Unit) {
 		Handler(Looper.getMainLooper()).postDelayed(function, millis)
 	}
+
 
 
 }
