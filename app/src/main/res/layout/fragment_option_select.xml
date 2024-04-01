@@ -10,11 +10,13 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear_type_grade_quality"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="1dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linear_stat"
+        app:layout_constraintVertical_weight="1"
+        android:paddingVertical="10dp"
+        >
 
         <!--    부위    -->
         <com.google.android.material.textfield.TextInputLayout
@@ -22,10 +24,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="1"
             app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/pastel_green">
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+            >
 
             <AutoCompleteTextView
                 android:id="@+id/actext_type"
@@ -36,10 +39,13 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:gravity="left|center"
+                android:hint="@string/type"
                 android:inputType="none"
-                android:maxLines="1"
-                android:text="@string/type"
-                android:textSize="15sp" />
+                android:singleLine="true"
+                android:textSize="15sp"
+
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,10 +55,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="1"
             app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/pastel_green">
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+            >
 
             <AutoCompleteTextView
                 android:id="@+id/actext_grade"
@@ -63,8 +70,8 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:hint="@string/grade"
                 android:inputType="none"
-                android:text="@string/grade"
                 android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,10 +81,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="1"
             app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/pastel_green">
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+            >
 
             <AutoCompleteTextView
                 android:id="@+id/actext_quality"
@@ -88,8 +96,8 @@
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:hint="@string/quality"
                 android:inputType="none"
-                android:text="@string/quality"
                 android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -100,101 +108,284 @@
 
     <!--  스탯1, 2  -->
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_stat"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="1dp"
-        app:layout_constraintTop_toBottomOf="@id/linear_type_grade_quality">
+        android:layout_height="0dp"
+        android:gravity="top|center"
+        app:layout_constraintTop_toBottomOf="@id/linear_type_grade_quality"
+        app:layout_constraintBottom_toTopOf="@id/linear_engraving1"
+        app:layout_constraintVertical_weight="1"
+        android:paddingVertical="10dp"
+        >
 
+        <!--stat1-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropdown_stat1"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="2"
             app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/pastel_green">
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+
+            >
 
             <AutoCompleteTextView
                 android:id="@+id/actext_stat1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:hint="@string/stat"
                 android:inputType="none"
-                android:text="@string/stat"
                 android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
+        <!-- stat1 min -->
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edit_text_min_stat1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:hint="min"
             android:gravity="center"
-            android:layout_gravity="center"
+            android:hint="@string/min"
             android:inputType="number"
             android:maxLength="1"
-            android:textColorHint="@color/grey"
             android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:textStyle="bold"
+            android:layout_marginHorizontal="5dp"
+
+
             />
 
-<!--        -->
+        <!--    stat2    -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropdown_stat2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="2"
+            android:enabled="false"
             app:boxBackgroundColor="@color/white"
             app:boxStrokeColor="@color/pastel_green"
-            android:enabled="false"
+            android:layout_marginHorizontal="5dp"
+
             >
 
             <AutoCompleteTextView
                 android:id="@+id/actext_stat2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:clickable="false"
                 android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:hint="@string/stat"
                 android:inputType="none"
-                android:text="@string/stat"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- stat2 min  -->
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edit_text_min_stat2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="min"
+            android:enabled="false"
             android:gravity="center"
-            android:layout_gravity="center"
+            android:hint="@string/min"
             android:inputType="number"
             android:maxLength="1"
-            android:textColorHint="@color/grey"
             android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:textStyle="bold"
-            android:enabled="false"
-            android:layout_margin="10dp"
-
+            android:layout_marginHorizontal="5dp"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <!--  engraving1 -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_engraving1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|center"
+        app:layout_constraintTop_toBottomOf="@id/linear_stat"
+        app:layout_constraintBottom_toTopOf="@id/linear_engraving2"
+        app:layout_constraintVertical_weight="1"
+        android:paddingVertical="10dp"
+        >
+        <!--stat1-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_engraving1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/actext_engraving1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/engraving1"
+                android:inputType="none"
+                android:textSize="15sp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- stat1 min -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_text_min_engraving1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/min"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="5dp"
+
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--  engraving2  -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_engraving2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|center"
+        app:layout_constraintTop_toBottomOf="@id/linear_engraving1"
+        app:layout_constraintBottom_toTopOf="@id/linear_penalty"
+        app:layout_constraintVertical_weight="1"
+        android:paddingVertical="10dp"
+        >
+        <!--stat1-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_engraving2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/actext_engraving2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/engraving2"
+                android:inputType="none"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- stat1 min -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_text_min_engraving2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/min"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textStyle="bold"
+            android:layout_marginHorizontal="5dp"
+
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--  penalty  -->
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_penalty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|center"
+        android:paddingVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@id/linear_engraving2"
+        app:layout_constraintBottom_toTopOf="@id/btn_option_search"
+        app:layout_constraintVertical_weight="1"
+        >
+        <!--stat1-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_penalty"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/pastel_green"
+            android:layout_marginHorizontal="5dp"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/actext_penalty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/penalty"
+                android:inputType="none"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- stat1 min -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_text_min_penalty"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="@string/min"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_option_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/pastel_green"
+        android:text="검색"
+        app:icon="@drawable/auction_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_penalty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_weight="1"
+        android:layout_marginVertical="10dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

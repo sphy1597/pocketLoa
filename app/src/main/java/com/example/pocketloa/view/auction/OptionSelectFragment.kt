@@ -28,11 +28,9 @@ class OptionSelectFragment : Fragment() {
 		binding = FragmentOptionSelectBinding.inflate(inflater, container, false)
 		val view = binding.root
 
-		setupDropdown(binding.actextType, R.array.type_items)
-		setupDropdown(binding.actextGrade, R.array.grade_items)
-		setupDropdown(binding.actextQuality, R.array.qualities_items)
-		setupDropdown(binding.actextStat1, R.array.stat_items)
-		setupDropdown(binding.actextStat2, R.array.stat_items)
+		initDropdown()
+
+
 
 
 		binding.actextType.setOnItemClickListener { parent, view, position, id ->
@@ -58,6 +56,18 @@ class OptionSelectFragment : Fragment() {
 		val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, array)
 		actext.setAdapter(adapter)
 	}
+
+	private fun initDropdown(){
+		setupDropdown(binding.actextType, R.array.type_items)
+		setupDropdown(binding.actextGrade, R.array.grade_items)
+		setupDropdown(binding.actextQuality, R.array.qualities_items)
+		setupDropdown(binding.actextStat1, R.array.stat_items)
+		setupDropdown(binding.actextStat2, R.array.stat_items)
+		setupDropdown(binding.actextEngraving1, R.array.engraving_items)
+		setupDropdown(binding.actextEngraving2, R.array.engraving_items)
+		setupDropdown(binding.actextPenalty, R.array.penalty_items)
+	}
+
 
 
 }

@@ -26,6 +26,11 @@
     <string name="quality">품질</string>
     <string name="stat">스탯</string>
     <string name="engraving">각인</string>
+    <string name="engraving1">각인1</string>
+    <string name="engraving2">각인2</string>
+    <string name="min">min</string>
+    <string name="max">max</string>
+    <string name="penalty">패널티</string>
 
 
 </resources>
