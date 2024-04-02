@@ -32,6 +32,6 @@ class IntroActivity : AppCompatActivity() {
 		)
 	}
 	companion object {
-		private const val SPLASH_DELAY_TIME = 2000L
+		private const val SPLASH_DELAY_TIME = 1000L
 	}
 }

@@ -19,6 +19,7 @@ class AuctionViewModel : ViewModel() {
 	private val apiKey = BuildConfig.API_KEY
 
 	private val auth = "bearer ${apiKey}"
+
 	private val requestBody = RequestBody(
 		itemGradeQuality = 80,
 		itemName = "참혹한 파멸의 목걸이",
@@ -32,6 +33,8 @@ class AuctionViewModel : ViewModel() {
 		pageNo = 1,
 		sortCondition = "ASC"
 	)
+
+	private val userInput = mutableMapOf<String, String?>()
 
 	private val _liveItems = MutableLiveData<List<Item>>()
 	val liveItems: LiveData<List<Item>>
@@ -59,9 +62,26 @@ class AuctionViewModel : ViewModel() {
 
 	}
 
-	fun viewModelTest() {
-		Log.d("test Log", "Auction View Model Test")
+	fun viewModelTest2( data : String ){
+		Log.d("test Log", "Auction View Model Test : ${data}")
+		Log.d("test Log", "${data.equals("")}")
+
 	}
+
+	fun userInputTest(){
+		for((key,value) in userInput){
+			Log.d("test", "Key : ${key}, value : ${value}")
+		}
+	}
+
+	fun setUserInput(key: String, value: String){
+		userInput[key] = value
+	}
+
+
+
+
+
 
 
 
