@@ -19,6 +19,7 @@ class EquipmentDetailFragment : Fragment() {
 	private lateinit var binding: FragmentEquipmentDetailBinding
 	private lateinit var viewmodel : AuctionViewModel
 
+	private val userInput = mutableMapOf<String, String?>()
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		viewmodel = ViewModelProvider(this).get(AuctionViewModel::class.java)
@@ -45,7 +46,8 @@ class EquipmentDetailFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		initListener()
+
+
 
 
 		// 장비 마다 옵션 선택 가능 여부 변경
@@ -65,13 +67,30 @@ class EquipmentDetailFragment : Fragment() {
 				else -> {
 					binding.dropdownStat2.isEnabled = false
 					binding.editTextMinStat2.isEnabled = false
+					binding.actextStat2.setText("")
+					binding.editTextMinStat2.setText("")
 				}
 			}
 		}
 
 		// 선택 안됐으면 .equals("")
 		binding.btnOptionSearch.setOnClickListener{
-			viewmodel.userInputTest()
+
+			userInput["Type"]=binding.actextType.text.toString()
+			userInput["Grade"] = binding.actextGrade.text.toString()
+			userInput["Quality"] = binding.actextQuality.text.toString()
+			userInput["Stat1"] = binding.actextStat1.text.toString()
+			userInput["StatMin1"] = binding.editTextMinStat1.text.toString()
+			userInput["Stat2"] = binding.actextStat2.text.toString()
+			userInput["StatMin2"] = binding.editTextMinStat2.text.toString()
+			userInput["Engraving1"] = binding.actextEngraving1.text.toString()
+			userInput["EngravingMin1"] = binding.editTextMinEngraving1.text.toString()
+			userInput["Engraving2"] = binding.actextEngraving2.text.toString()
+			userInput["EngravingMin2"] = binding.editTextMinEngraving2.text.toString()
+			userInput["Penalty"] = binding.actextPenalty.text.toString()
+			userInput["PenaltyMin"] = binding.editTextMinPenalty.text.toString()
+
+			viewmodel.userInputTest(userInput)
 		}
 
 	}
@@ -91,53 +110,6 @@ class EquipmentDetailFragment : Fragment() {
 		setupDropdown(binding.actextEngraving1, R.array.engraving_items)
 		setupDropdown(binding.actextEngraving2, R.array.engraving_items)
 		setupDropdown(binding.actextPenalty, R.array.penalty_items)
-	}
-
-	private fun initListener(){
-		binding.actextType.addTextChangedListener{
-			viewmodel.setUserInput("Type", binding.actextType.text.toString())
-		}
-
-		binding.actextGrade.addTextChangedListener {
-			viewmodel.setUserInput("Grade", binding.actextGrade.text.toString())
-		}
-		binding.actextQuality.addTextChangedListener {
-			viewmodel.setUserInput("Quality", binding.actextQuality.text.toString())
-		}
-		binding.actextStat1.addTextChangedListener {
-			viewmodel.setUserInput("Stat1", binding.actextStat1.text.toString())
-		}
-		binding.editTextMinStat1.addTextChangedListener{
-			viewmodel.setUserInput("StatMin1", binding.editTextMinStat1.text.toString())
-		}
-		binding.actextStat2.addTextChangedListener {
-			viewmodel.setUserInput("Stat2", binding.actextStat2.text.toString())
-		}
-		binding.editTextMinStat2.addTextChangedListener{
-			viewmodel.setUserInput("StatMin2", binding.editTextMinStat2.text.toString())
-		}
-
-		binding.actextEngraving1.addTextChangedListener {
-			viewmodel.setUserInput("Engraving1", binding.actextEngraving1.text.toString())
-		}
-		binding.editTextMinEngraving1.addTextChangedListener {
-			viewmodel.setUserInput("EngravingMin1", binding.editTextMinEngraving1.text.toString())
-		}
-
-		binding.actextEngraving2.addTextChangedListener {
-			viewmodel.setUserInput("Engraving2", binding.actextEngraving2.text.toString())
-		}
-		binding.editTextMinEngraving2.addTextChangedListener {
-			viewmodel.setUserInput("EngravingMin2", binding.editTextMinEngraving2.text.toString())
-		}
-
-		binding.actextPenalty.addTextChangedListener {
-			viewmodel.setUserInput("Penalty", binding.actextPenalty.text.toString())
-		}
-		binding.editTextMinPenalty.addTextChangedListener {
-			viewmodel.setUserInput("PenaltyMin", binding.editTextMinPenalty.text.toString())
-		}
-
 	}
 
 

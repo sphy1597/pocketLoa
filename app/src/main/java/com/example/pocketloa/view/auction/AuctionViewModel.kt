@@ -34,8 +34,6 @@ class AuctionViewModel : ViewModel() {
 		sortCondition = "ASC"
 	)
 
-	private val userInput = mutableMapOf<String, String?>()
-
 	private val _liveItems = MutableLiveData<List<Item>>()
 	val liveItems: LiveData<List<Item>>
 		get() = _liveItems
@@ -52,31 +50,22 @@ class AuctionViewModel : ViewModel() {
 				Log.e("NoItemError", "검색된 매물이 없습니다.")
 			}
 
-
 		}catch (networkException : IOException){
 			Log.e("NetworkError", "인터넷 연결 에러")
 
 		}
 
-
-
 	}
 
-	fun viewModelTest2( data : String ){
-		Log.d("test Log", "Auction View Model Test : ${data}")
-		Log.d("test Log", "${data.equals("")}")
 
-	}
 
-	fun userInputTest(){
+	fun userInputTest(userInput : MutableMap<String, String?>){
 		for((key,value) in userInput){
 			Log.d("test", "Key : ${key}, value : ${value}")
 		}
 	}
 
-	fun setUserInput(key: String, value: String){
-		userInput[key] = value
-	}
+
 
 
 
