@@ -1,12 +1,14 @@
 package com.example.pocketloa.view.auction
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +21,7 @@ class EquipmentDetailFragment : Fragment() {
 	private lateinit var binding: FragmentEquipmentDetailBinding
 	private lateinit var viewmodel : AuctionViewModel
 
-	private val userInput = mutableMapOf<String, String?>()
+	private val userInput = mutableMapOf<String, String>()
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		viewmodel = ViewModelProvider(this).get(AuctionViewModel::class.java)
@@ -51,7 +53,7 @@ class EquipmentDetailFragment : Fragment() {
 
 
 		// 장비 마다 옵션 선택 가능 여부 변경
-		binding.actextType.setOnItemClickListener { parent, view, position, id ->
+		binding.actextCategory.setOnItemClickListener { parent, view, position, id ->
 
 			when(parent.getItemAtPosition(position).toString()){
 				"목걸이" -> {
@@ -76,21 +78,43 @@ class EquipmentDetailFragment : Fragment() {
 		// 선택 안됐으면 .equals("")
 		binding.btnOptionSearch.setOnClickListener{
 
-			userInput["Type"]=binding.actextType.text.toString()
-			userInput["Grade"] = binding.actextGrade.text.toString()
-			userInput["Quality"] = binding.actextQuality.text.toString()
-			userInput["Stat1"] = binding.actextStat1.text.toString()
-			userInput["StatMin1"] = binding.editTextMinStat1.text.toString()
-			userInput["Stat2"] = binding.actextStat2.text.toString()
-			userInput["StatMin2"] = binding.editTextMinStat2.text.toString()
-			userInput["Engraving1"] = binding.actextEngraving1.text.toString()
-			userInput["EngravingMin1"] = binding.editTextMinEngraving1.text.toString()
-			userInput["Engraving2"] = binding.actextEngraving2.text.toString()
-			userInput["EngravingMin2"] = binding.editTextMinEngraving2.text.toString()
-			userInput["Penalty"] = binding.actextPenalty.text.toString()
-			userInput["PenaltyMin"] = binding.editTextMinPenalty.text.toString()
+			if(binding.actextCategory.text.isEmpty()){
+				Log.d("test", "No Select equipment")
+				Toast.makeText(requireContext(), "부위를 선택해주세요", Toast.LENGTH_SHORT).show()
+			}else{
+//				userInput["Type"]=binding.actextType.text.toString()
+//				userInput["Grade"] = binding.actextGrade.text.toString()
+//				userInput["Quality"] = binding.actextQuality.text.toString()
+//				userInput["Stat1"] = binding.actextStat1.text.toString()
+//				userInput["StatMin1"] = binding.editTextMinStat1.text.toString()
+//				userInput["Stat2"] = binding.actextStat2.text.toString()
+//				userInput["StatMin2"] = binding.editTextMinStat2.text.toString()
+//				userInput["Engraving1"] = binding.actextEngraving1.text.toString()
+//				userInput["EngravingMin1"] = binding.editTextMinEngraving1.text.toString()
+//				userInput["Engraving2"] = binding.actextEngraving2.text.toString()
+//				userInput["EngravingMin2"] = binding.editTextMinEngraving2.text.toString()
+//				userInput["Penalty"] = binding.actextPenalty.text.toString()
+//				userInput["PenaltyMin"] = binding.editTextMinPenalty.text.toString()
 
-			viewmodel.userInputTest(userInput)
+				val userInput = UserInput(
+					Category = binding.actextCategory.text.toString(),
+							Grade = binding.actextGrade.text.toString(),
+							Quality = binding.actextQuality.text.toString(),
+							Stat1 = binding.actextStat1.text.toString(),
+							StatMin1 = binding.editTextMinStat1.text.toString(),
+							Stat2 = binding.actextStat2.text.toString(),
+							StatMin2 = binding.editTextMinStat2.text.toString(),
+							Engraving1 = binding.actextEngraving1.text.toString(),
+							EngravingMin1 = binding.editTextMinEngraving1.text.toString(),
+							Engraving2 = binding.actextEngraving2.text.toString(),
+							EngravingMin2 = binding.editTextMinEngraving2.text.toString(),
+							Penalty = binding.actextPenalty.text.toString(),
+							PenaltyMin = binding.editTextMinPenalty.text.toString()
+				)
+
+				viewmodel.makeReq(userInput)
+
+			}
 		}
 
 	}
@@ -102,7 +126,7 @@ class EquipmentDetailFragment : Fragment() {
 	}
 
 	private fun initDropdown(){
-		setupDropdown(binding.actextType, R.array.type_items)
+		setupDropdown(binding.actextCategory, R.array.type_items)
 		setupDropdown(binding.actextGrade, R.array.grade_items)
 		setupDropdown(binding.actextQuality, R.array.qualities_items)
 		setupDropdown(binding.actextStat1, R.array.stat_items)

@@ -10,8 +10,10 @@ import com.example.pocketloa.Repository.NetworkRepository
 import com.example.pocketloa.model.auction.req.EtcOption
 import com.example.pocketloa.model.auction.req.RequestBody
 import com.example.pocketloa.model.auction.res.Item
+import com.example.pocketloa.model.auction.res.Option
 import kotlinx.coroutines.launch
 import okio.IOException
+import java.util.EmptyStackException
 
 class AuctionViewModel : ViewModel() {
 
@@ -22,7 +24,6 @@ class AuctionViewModel : ViewModel() {
 
 	private val requestBody = RequestBody(
 		itemGradeQuality = 80,
-		itemName = "참혹한 파멸의 목걸이",
 		etcOptions = listOf(
 			EtcOption(firstOption = 3, secondOption = 195, minValue = 1, maxValue = null),
 			EtcOption(firstOption = 3, secondOption = 301, minValue = 1, maxValue = null)
@@ -59,11 +60,32 @@ class AuctionViewModel : ViewModel() {
 
 
 
-	fun userInputTest(userInput : MutableMap<String, String?>){
-		for((key,value) in userInput){
-			Log.d("test", "Key : ${key}, value : ${value}")
-		}
+
+	fun makeReq (userInput: UserInput){
+
+		// Todo : need mapping Option to Option code
+		val etcOptions = listOf<EtcOption>(
+			EtcOption(3,userInput.Engraving1.toInt(),userInput.EngravingMin1.toInt(),null),
+			EtcOption(3,userInput.Engraving2.toInt(),userInput.EngravingMin2.toInt(),null),
+			EtcOption(6,userInput.Penalty.toInt(),userInput.PenaltyMin.toInt(),null),
+
+			)
+
+		val reqBody = RequestBody(
+			categoryCode = userInput.Category.toInt(),
+			itemGradeQuality = userInput.Quality.toInt(),
+			itemGrade = userInput.Grade,
+			sortCondition = "ASC",
+			etcOptions = etcOptions,
+			sort = "BUY_PRICE",
+			pageNo = 0
+		)
+
+		Log.d("test", "req body : ${reqBody}")
+
+
 	}
+
 
 
 
