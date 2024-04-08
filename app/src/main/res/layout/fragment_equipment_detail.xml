@@ -187,6 +187,7 @@
                 android:hint="@string/stat"
                 android:inputType="none"
                 android:textSize="15sp"
+                android:enabled="false"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -370,7 +371,9 @@
             android:maxLength="1"
             android:textColor="@color/black"
             android:textColorHint="@color/grey"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginHorizontal="5dp"
+            />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
