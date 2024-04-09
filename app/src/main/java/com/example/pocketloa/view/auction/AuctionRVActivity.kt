@@ -15,8 +15,8 @@ class AuctionRVActivity : AppCompatActivity() {
 
 	private val viewModel : AuctionViewModel by viewModels()
 
-
 	private lateinit var auctionAdapter: AuctionRVAdapter
+
 
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +24,12 @@ class AuctionRVActivity : AppCompatActivity() {
 		binding = RvAuctionResultBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
-
-		Log.d("test log", "onCreate Auction RV Activity")
-
-		viewModel.postMatchItems()
-
-		Log.d("test log", "Start viewModel.postMatchItems()")
+		Log.d("test", "RV on Create")
+		viewModel.updateLiveData()
 
 		viewModel.liveItems.observe(this, Observer {
+			Log.d("test live data", "${it.size}")
+
 			auctionAdapter = AuctionRVAdapter(this, it)
 			binding.rvAuctionResult.adapter = auctionAdapter
 			binding.rvAuctionResult.layoutManager = LinearLayoutManager(this)
@@ -40,5 +38,10 @@ class AuctionRVActivity : AppCompatActivity() {
 		})
 
 
+
+
+
 	}
+
+
 }

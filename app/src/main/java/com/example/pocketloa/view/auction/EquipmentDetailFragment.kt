@@ -1,5 +1,6 @@
 package com.example.pocketloa.view.auction
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextWatcher
 import android.util.Log
@@ -12,6 +13,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.pocketloa.R
 import com.example.pocketloa.databinding.FragmentEquipmentDetailBinding
@@ -20,12 +22,12 @@ import com.example.pocketloa.databinding.FragmentEquipmentDetailBinding
 class EquipmentDetailFragment : Fragment() {
 
 	private lateinit var binding: FragmentEquipmentDetailBinding
-	private lateinit var viewmodel: AuctionViewModel
+	private lateinit var viewModel: AuctionViewModel
 
 	private val userInput = mutableMapOf<String, String>()
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		viewmodel = ViewModelProvider(this).get(AuctionViewModel::class.java)
+		viewModel = ViewModelProvider(this).get(AuctionViewModel::class.java)
 
 	}
 
@@ -49,6 +51,11 @@ class EquipmentDetailFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 
+		viewModel.liveItems.observe(this, Observer {
+			Log.d("test", "$it")
+		})
+
+
 		binding.actextQuality.addTextChangedListener {
 			Log.d("test", "on Changed actextQuality")
 		}
@@ -60,6 +67,8 @@ class EquipmentDetailFragment : Fragment() {
 
 			when (parent.getItemAtPosition(position).toString()) {
 				"목걸이" -> {
+					binding.dropdownStat1.isEnabled = true
+					binding.editTextMinStat1.isEnabled = true
 					binding.dropdownStat2.isEnabled = true
 					binding.editTextMinStat2.isEnabled = true
 				}
@@ -68,8 +77,14 @@ class EquipmentDetailFragment : Fragment() {
 					binding.editTextMinStat1.isEnabled = false
 					binding.dropdownStat2.isEnabled = false
 					binding.editTextMinStat2.isEnabled = false
+					binding.actextStat1.setText("")
+					binding.editTextMinStat1.setText("")
+					binding.actextStat2.setText("")
+					binding.editTextMinStat2.setText("")
 				}
 				else -> {
+					binding.dropdownStat1.isEnabled = true
+					binding.editTextMinStat1.isEnabled = true
 					binding.dropdownStat2.isEnabled = false
 					binding.editTextMinStat2.isEnabled = false
 					binding.actextStat2.setText("")
@@ -103,7 +118,10 @@ class EquipmentDetailFragment : Fragment() {
 					PenaltyMin = binding.editTextMinPenalty.text.toString()
 				)
 
-				viewmodel.auctionSearch(userInput)
+				val intent = Intent(requireContext(), AuctionRVActivity::class.java)
+				startActivity(intent)
+
+				viewModel.auctionSearch(userInput)
 
 			}
 		}

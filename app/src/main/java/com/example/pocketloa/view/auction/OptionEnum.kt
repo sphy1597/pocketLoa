@@ -111,7 +111,15 @@ enum class OptionEnum(val code : Int, val text: String) {
 	SUPPRESSION(17, "제압"),
 	SWIFTNESS(18, "신속"),
 	PATIENCE(19, "인내"),
-	PROFICIENCY(20, "숙련");
+	PROFICIENCY(20, "숙련"),
+
+//	category
+	NECKLACE(200010, "목걸이"),
+	EARRING(200020, "귀걸이"),
+	RING(200030, "반지"),
+	BRACELET(200040, "팔찌"),
+	JEWELRY(200000, "장신구"),
+	GEM(210000, "보석");
 
 	companion object {
 		// 주어진 텍스트에 해당하는 값 반환
