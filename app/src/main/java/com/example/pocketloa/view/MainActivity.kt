@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.pocketloa.R
 import com.example.pocketloa.databinding.ActivityMainBinding
 import com.example.pocketloa.view.auction.AuctionFragment
+import java.lang.Math.ceil
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		initNav()
+
+
 
 		binding.bottomNav.setOnItemSelectedListener {
 			when(it.itemId){

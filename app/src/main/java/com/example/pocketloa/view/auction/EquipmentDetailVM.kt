@@ -1,76 +1,24 @@
 package com.example.pocketloa.view.auction
 
 import android.util.Log
-import android.view.PixelCopy.Request
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.pocketloa.BuildConfig
-import com.example.pocketloa.Repository.NetworkRepository
+import com.example.pocketloa.Repository.AuctionRepository
 import com.example.pocketloa.model.auction.req.EtcOption
 import com.example.pocketloa.model.auction.req.RequestBody
 import com.example.pocketloa.model.auction.res.Item
-import kotlinx.coroutines.launch
-import okio.IOException
 
-class AuctionViewModel : ViewModel() {
-
-	private val networkRepo = NetworkRepository()
-	private val apiKey = BuildConfig.API_KEY
+class EquipmentDetailVM() : ViewModel() {
 
 
-	// LostArk API Auth token
-	// todo : get by user input
-	private val auth = "bearer ${apiKey}"
-	private var searching : Boolean = false
+	private val auctionRepo = AuctionRepository
 
-
-
-	// Search result live data
-	private val searchResult = arrayListOf<Item>()
-	private val _liveItems = MutableLiveData<List<Item>>()
-	val liveItems: LiveData<List<Item>>
-		get() = _liveItems
-
-	private var requestBody : RequestBody? = null
-	private var userInput : UserInput? = null
-
-	// function of Euqipment Detail Fragment search button
-	fun auctionSearch(input: UserInput) {
-
-		val req = makeReq(input)
-		postMatchItems(auth, req)
-
-	}
-
-	private fun postMatchItems(auth: String, req : RequestBody) = viewModelScope.launch {
-		Log.d("test", "Run postMatchItems of Auction View model")
-
-		val result = networkRepo.postMatchItems(auth, req)
-
-
-		try {
-			if (result.Items != null) {
-				searchResult.addAll(result.Items)
-			} else {
-				Log.e("NoItemError", "검색된 매물이 없습니다.")
-			}
-
-
-
-		} catch (networkException: IOException) {
-			Log.e("NetworkError", "인터넷 연결 에러")
-
-		}
-
-	}
 
 
 
 	// make req body
-	fun makeReq(userInput: UserInput): RequestBody {
+	fun makeReq(userInput: UserInput) {
 
 		// Todo : other options have total too
 		val grade: String
@@ -109,7 +57,7 @@ class AuctionViewModel : ViewModel() {
 			pageNo = 0
 		)
 
-		return reqBody
+		auctionRepo.auctionManager(reqBody)
 
 	}
 

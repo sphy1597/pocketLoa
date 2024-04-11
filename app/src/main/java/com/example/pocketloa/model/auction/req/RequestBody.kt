@@ -8,7 +8,7 @@ data class RequestBody(
 	@SerializedName("Sort") val sort: String?,
 	@SerializedName("CategoryCode") val categoryCode: Int?,
 	@SerializedName("ItemGrade") val itemGrade: String?,
-	@SerializedName("PageNo") val pageNo: Int,
+	@SerializedName("PageNo") var pageNo: Int,
 	@SerializedName("SortCondition") val sortCondition: String?
 
 	)

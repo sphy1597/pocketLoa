@@ -2,7 +2,6 @@ package com.example.pocketloa.view.auction
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,23 +10,23 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pocketloa.R
+import com.example.pocketloa.Repository.AuctionRepository
 import com.example.pocketloa.databinding.FragmentEquipmentDetailBinding
 
 
 class EquipmentDetailFragment : Fragment() {
 
 	private lateinit var binding: FragmentEquipmentDetailBinding
-	private lateinit var viewModel: AuctionViewModel
+	private lateinit var viewModel: EquipmentDetailVM
 
 	private val userInput = mutableMapOf<String, String>()
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		viewModel = ViewModelProvider(this).get(AuctionViewModel::class.java)
+		viewModel = ViewModelProvider(this).get(EquipmentDetailVM::class.java)
 
 	}
 
@@ -50,10 +49,6 @@ class EquipmentDetailFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-
-		viewModel.liveItems.observe(this, Observer {
-			Log.d("test", "$it")
-		})
 
 
 		binding.actextQuality.addTextChangedListener {
@@ -121,7 +116,7 @@ class EquipmentDetailFragment : Fragment() {
 				val intent = Intent(requireContext(), AuctionRVActivity::class.java)
 				startActivity(intent)
 
-				viewModel.auctionSearch(userInput)
+				viewModel.makeReq(userInput)
 
 			}
 		}

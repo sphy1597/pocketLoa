@@ -11,7 +11,7 @@ import com.example.pocketloa.databinding.FragmentAuctionBinding
 
 class AuctionFragment : Fragment() {
 
-	private lateinit var viewModel : AuctionViewModel
+	private lateinit var viewModel : EquipmentDetailVM
 	private var _binding: FragmentAuctionBinding? = null
 	private val binding get() = _binding!!
 
