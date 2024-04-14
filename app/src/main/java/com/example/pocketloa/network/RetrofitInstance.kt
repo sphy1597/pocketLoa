@@ -7,9 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
-object RetrofitInstance {
+class RetrofitInstance {
 
-	private const val BASE_URL = "https://developer-lostark.game.onstove.com/"
+	private val BASE_URL = "https://developer-lostark.game.onstove.com/"
 
 	private val okHttpClient : OkHttpClient by lazy {
 		OkHttpClient.Builder( )

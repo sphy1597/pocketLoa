@@ -22,7 +22,6 @@ object AuctionRepository {
 		return searchResult
 	}
 
-
 	// LostArk API Auth token
 	private val apiKey = BuildConfig.API_KEY
 	private val auth = "bearer ${apiKey}"
@@ -30,8 +29,7 @@ object AuctionRepository {
 	// coroutine
 	private var job: Job? = null
 
-	private val networkRepo = NetworkRepository()
-
+	private val networkRepo = NetworkRepository
 
 	fun getList(): ArrayList<Item> {
 		Log.d("test", "getList")
@@ -47,7 +45,6 @@ object AuctionRepository {
 		job = CoroutineScope(Dispatchers.IO).launch {
 			val head = getHead(req)
 			for ( i in 0 until head){
-
 				postEquipment(req, i)
 			}
 

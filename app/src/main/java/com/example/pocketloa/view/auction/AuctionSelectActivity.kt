@@ -16,12 +16,6 @@ class AuctionSelectActivity : AppCompatActivity() {
 		setContentView(binding.root)
 		binding.toolbarAuctionSelect.toolbarTitle.text = "경매장"
 
-		binding.auctionSelectButton.setOnClickListener {
-			Log.d("test log", "Click auction Select Button")
-			val intent = Intent(this, AuctionRVActivity::class.java)
-			startActivity(intent)
-		}
-
 
 	}
 }
