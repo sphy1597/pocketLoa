@@ -9,80 +9,60 @@ import com.example.pocketloa.model.auction.res.Item
 import kotlinx.coroutines.*
 import kotlin.math.ceil
 
-object AuctionRepository {
+class AuctionRepository {
 
-
-	private val searchResult = arrayListOf<Item>()
-
-	private val _apiState = MutableLiveData<String>()
-	val apiState: LiveData<String>
-		get() = _apiState
-
-	fun getdata(): ArrayList<Item> {
-		return searchResult
-	}
 
 	// LostArk API Auth token
 	private val apiKey = BuildConfig.API_KEY
 	private val auth = "bearer ${apiKey}"
 
-	// coroutine
-	private var job: Job? = null
-
 	private val networkRepo = NetworkRepository
 
-	fun getList(): ArrayList<Item> {
-		Log.d("test", "getList")
-		_apiState.postValue("wait")
-		return searchResult
-	}
+	private val searchResult = arrayListOf<Item>()
 
+	private var apiCount : Int = 0
+	private val oneTimeLimit : Int = 10
+	private var totalCount : Int = 0
+	private var leftCount : Int = 0
 
-	fun auctionManager(req: RequestBody) {
-		if (job?.isActive == true) {
-			return
-		}
-		job = CoroutineScope(Dispatchers.IO).launch {
-			val head = getHead(req)
-			for ( i in 0 until head){
-				postEquipment(req, i)
-			}
-
-		}
-	}
-
-
-	private suspend fun postEquipment(req: RequestBody, pageNo : Int) {
+	suspend fun postEquipment(req: RequestBody) : List<Item>{
 
 		try {
-			req.pageNo = pageNo
-			_apiState.postValue("searching")
-			val result = networkRepo.postMatchItems(auth, req)
-			if (result.Items != null) {
-				searchResult.addAll(result.Items)
-				Log.d("test", "add all result.item")
-				_apiState.postValue("finish")
+			totalCount = networkRepo.getHead(auth, req)
 
-			} else {
-				Log.e("error", "No Items, 검색된 매물이 없습니다.")
+			if (totalCount <= 10){
+				apiCount = totalCount
+			}else{
+				apiCount = oneTimeLimit
 			}
 
+			val response = networkRepo.postMatchItems(auth, req, apiCount)
+
+			for(result in response){
+				if (result.Items != null){
+					searchResult.addAll(result.Items)
+				}else{
+					Log.d("test", "No Items postEquipment")
+				}
+			}
+
+			return searchResult
 
 
 		} catch (e: Error) {
 			Log.e("error", "Network Error : ${e.message}")
+			return searchResult
 		}
 	}
 
-	private suspend fun getHead(req: RequestBody): Int {
-		val getHead = networkRepo.postMatchItems(auth, req)
-		val total: Double = getHead.TotalCount.toDouble()
-		val pageSize: Double = getHead.PageSize.toDouble()
-
-		// 소수점 올림
-		return ceil(total / pageSize).toInt()
+	suspend fun checkLimit(req: RequestBody) : Boolean{
+		leftCount = networkRepo.checkLimit()
+		totalCount = networkRepo.getHead(auth, req)
+		return leftCount-totalCount > 0
 
 	}
+
+
 
 
 }

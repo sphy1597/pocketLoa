@@ -357,13 +357,13 @@
         </com.google.android.material.textfield.TextInputLayout>
         <!-- stat1 min -->
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edit_text_min_penalty"
+            android:id="@+id/edit_text_max_penalty"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="@string/min"
+            android:hint="@string/max"
             android:inputType="number"
             android:maxLength="1"
             android:textColor="@color/black"
