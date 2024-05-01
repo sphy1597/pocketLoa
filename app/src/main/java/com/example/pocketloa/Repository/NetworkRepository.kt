@@ -20,7 +20,7 @@ object NetworkRepository {
 	private val client = RetrofitInstance()
 	private val apiService : ApiService = client.getInstance().create(ApiService::class.java)
 
-	private val limit = 100
+	private const val limit = 100
 	private var count = 0
 
 
@@ -30,6 +30,7 @@ object NetworkRepository {
 
 
 	fun checkLimit() : Int {
+		Log.d("test", "left api count : ${limit- count}")
 		return limit - count
 	}
 

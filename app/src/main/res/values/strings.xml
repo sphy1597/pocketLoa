@@ -32,5 +32,6 @@
     <string name="max">max</string>
     <string name="penalty">패널티</string>
 
-
+    <string name="bracelet_fixed_option">고정 옵션</string>
+    <string name="bracelet_grant_option">부여 옵션</string>
 </resources>

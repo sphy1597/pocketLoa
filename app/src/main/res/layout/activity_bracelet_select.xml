@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.PocketLoa"
+    tools:context=".view.auction.BraceletSelectActivity">
+
+    <include
+        android:id="@+id/toolbar_bracelet_select"
+        layout="@layout/toolbar" />
+
+
+    <!--  등급 옵션 수량  -->
+
+    <!-- fixed option 1  -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_bracelet_options"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        app:layout_constraintBottom_toTopOf="@id/linear_bracelet_fixed1"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_bracelet_select"
+        app:layout_constraintVertical_weight="1"
+        tools:layout_editor_absoluteX="0dp">
+
+        <!--   등급    -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_bracelet_grade"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/pastel_green">
+
+            <AutoCompleteTextView
+                android:id="@+id/actext_bracelet_grade"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="left|center"
+                android:hint="@string/grade"
+                android:inputType="none"
+                android:singleLine="true"
+                android:textSize="15sp"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--  fixed options  -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/bracelet_fixed_option"
+
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <Button
+                    android:id="@+id/btn_fixed_subtract"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/subtract"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    />
+
+
+                <TextView
+                    android:id="@+id/text_fixed_count"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="30dp"
+
+                    />
+
+
+                <Button
+                    android:id="@+id/btn_fixed_plus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/plus"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--  grant options  -->
+        <!--  fixed options  -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/bracelet_grant_option"
+
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <Button
+                    android:id="@+id/btn_grant_subtract"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/subtract"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    />
+
+
+                <TextView
+                    android:id="@+id/text_grant_count"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="30dp"
+
+                    />
+
+
+                <Button
+                    android:id="@+id/btn_grant_plus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/plus"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_bracelet_fixed1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|center"
+        android:paddingVertical="10dp"
+        app:layout_constraintBottom_toTopOf="@id/linear_bracelet_fixed2"
+        app:layout_constraintTop_toBottomOf="@id/linear_bracelet_options"
+        app:layout_constraintVertical_weight="1">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_bracelet_fixed1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="4"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/pastel_green"
+
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/actext_bracelet_fixed1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="고정 옵션 1"
+                android:inputType="none"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- fixed option 2  -->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_bracelet_fixed2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|center"
+        android:paddingVertical="10dp"
+        app:layout_constraintBottom_toTopOf="@id/frame_bracelet_recommend"
+        app:layout_constraintTop_toBottomOf="@id/linear_bracelet_fixed1"
+        app:layout_constraintVertical_weight="1">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dropdown_bracelet_fixed2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="4"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/pastel_green"
+
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/actext_bracelet_fixed2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="고정 옵션 2"
+                android:inputType="none"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--  recommend  -->
+    <FrameLayout
+        android:id="@+id/frame_bracelet_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_bracelet_fixed2"
+        app:layout_constraintVertical_weight="2"
+
+
+        >
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

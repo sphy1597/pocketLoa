@@ -2,26 +2,25 @@ package com.example.pocketloa.view.auction
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pocketloa.databinding.RvAuctionResultBinding
+import com.example.pocketloa.databinding.RvEquipmentResultBinding
 import com.example.pocketloa.view.adapter.AuctionRVAdapter
 
-class AuctionRVActivity : AppCompatActivity() {
+class EquipmentRVActivity : AppCompatActivity() {
 
-	private lateinit var binding: RvAuctionResultBinding
+	private lateinit var binding: RvEquipmentResultBinding
 
-	private val viewModel: AuctionRVVM by viewModels()
+	private val viewModel: EquipmentRVVM by viewModels()
 
 	private lateinit var auctionAdapter: AuctionRVAdapter
 
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		binding = RvAuctionResultBinding.inflate(layoutInflater)
+		binding = RvEquipmentResultBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
 		// category는 null 이면 이전 Activity에서 넘어오지 않음
@@ -52,6 +51,8 @@ class AuctionRVActivity : AppCompatActivity() {
 		viewModel.state.observe(this, Observer {
 			Toast.makeText(this, "API State : $it", Toast.LENGTH_SHORT).show()
 		})
+
+
 
 
 

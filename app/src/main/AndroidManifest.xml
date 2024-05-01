@@ -13,20 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PocketLoa"
         tools:targetApi="31">
+        <!--  bracelet options select Activity  -->
+        <activity
+            android:name=".view.auction.BraceletSelectActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PocketLoa.NoActionBar"/>
         <!-- Auction Select Activity -->
         <activity
-            android:name=".view.auction.AuctionSelectActivity"
+            android:name=".view.auction.EquipmentSelectActivity"
             android:exported="false"
-            android:theme="@style/Theme.PocketLoa.NoActionBar"
-
-            />
+            android:theme="@style/Theme.PocketLoa.NoActionBar" />
         <!-- Auction Search Result RV Activity -->
         <activity
-            android:name=".view.auction.AuctionRVActivity"
-            android:exported="true">
-
-        </activity>
-        <!-- Intro splash -->
+            android:name=".view.auction.EquipmentRVActivity"
+            android:exported="true"></activity> <!-- Intro splash -->
         <activity
             android:name=".view.intro.IntroActivity"
             android:exported="true"
@@ -36,13 +36,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Main Activity -->
+        </activity>
+        <!-- Main Activity -->
         <activity
             android:name=".view.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.PocketLoa.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.PocketLoa.NoActionBar"></activity>
     </application>
 
 </manifest>

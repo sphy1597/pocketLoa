@@ -150,4 +150,9 @@
         <item>그믐의 경계</item>
     </array>
 
+    <array name="bracelet_grade">
+        <item>고대</item>
+        <item>유물</item>
+    </array>
+
 </resources>

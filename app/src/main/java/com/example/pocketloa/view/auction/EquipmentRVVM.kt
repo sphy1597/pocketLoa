@@ -12,7 +12,7 @@ import com.example.pocketloa.model.auction.res.Item
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class AuctionRVVM() : ViewModel() {
+class EquipmentRVVM : ViewModel() {
 
 
 	private val auctionRepo = AuctionRepository()

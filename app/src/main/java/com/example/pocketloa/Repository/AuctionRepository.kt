@@ -28,13 +28,7 @@ class AuctionRepository {
 	suspend fun postEquipment(req: RequestBody) : List<Item>{
 
 		try {
-			totalCount = networkRepo.getHead(auth, req)
-
-			if (totalCount <= 10){
-				apiCount = totalCount
-			}else{
-				apiCount = oneTimeLimit
-			}
+			apiCount = setOneTime(networkRepo.getHead(auth, req))
 
 			val response = networkRepo.postMatchItems(auth, req, apiCount)
 
@@ -57,10 +51,19 @@ class AuctionRepository {
 
 	suspend fun checkLimit(req: RequestBody) : Boolean{
 		leftCount = networkRepo.checkLimit()
-		totalCount = networkRepo.getHead(auth, req)
+		totalCount = setOneTime(networkRepo.getHead(auth, req))
 		return leftCount-totalCount > 0
+	}
+
+	private fun setOneTime(totalCount : Int) : Int{
+		if (totalCount >= oneTimeLimit){
+			return oneTimeLimit
+		}else{
+			return totalCount
+		}
 
 	}
+
 
 
 

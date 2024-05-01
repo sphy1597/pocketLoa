@@ -12,7 +12,6 @@ import com.example.pocketloa.databinding.FragmentAuctionBinding
 
 class AuctionFragment : Fragment() {
 
-	private lateinit var viewModel : EquipmentDetailVM
 	private var _binding: FragmentAuctionBinding? = null
 	private val binding get() = _binding!!
 
@@ -31,9 +30,14 @@ class AuctionFragment : Fragment() {
 		binding.btnAccessories.setOnClickListener {
 
 			// Auction Select Activity
-			val intent = Intent(requireContext(), AuctionSelectActivity::class.java)
+			val intent = Intent(requireContext(), EquipmentSelectActivity::class.java)
 			startActivity(intent)
 
+		}
+
+		binding.btnBracelet.setOnClickListener {
+			val intent = Intent(requireContext(), BraceletSelectActivity::class.java)
+			startActivity(intent)
 		}
 
 

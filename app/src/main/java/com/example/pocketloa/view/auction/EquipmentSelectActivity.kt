@@ -7,25 +7,20 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import com.example.pocketloa.R
-import com.example.pocketloa.databinding.ActivityAuctionSelectBinding
+import com.example.pocketloa.databinding.ActivityEquipmentSelectBinding
 
-class AuctionSelectActivity : AppCompatActivity() {
+class EquipmentSelectActivity : AppCompatActivity() {
 
-	private lateinit var binding: ActivityAuctionSelectBinding
+	private lateinit var binding: ActivityEquipmentSelectBinding
 
-	private val viewModel: EquipmentDetailVM by viewModels()
-
-
-	private val userInput = mutableMapOf<String, String>()
 
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		binding = ActivityAuctionSelectBinding.inflate(layoutInflater)
+		binding = ActivityEquipmentSelectBinding.inflate(layoutInflater)
 		setContentView(binding.root)
-		binding.toolbarAuctionSelect.toolbarTitle.text = "경매장"
+		binding.toolbarAuctionSelect.toolbarTitle.text = "장비 검색"
 
 		initDropdown()
 
@@ -88,7 +83,7 @@ class AuctionSelectActivity : AppCompatActivity() {
 				)
 
 
-				val intent = Intent(this, AuctionRVActivity::class.java)
+				val intent = Intent(this, EquipmentRVActivity::class.java)
 
 				// 데이터 넣기
 				intent.apply {
